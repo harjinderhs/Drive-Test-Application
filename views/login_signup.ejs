@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layouts/header'); -%>
+
+    <body>
+        <!-- Navigation-->
+        <%- include('./layouts/nav'); -%>
+
+            <!-- Page Header-->
+            <header class="masthead" style="background-color: #777696;">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+
+                            <% if (flag) { %>
+
+                                <div class="page-heading">
+                                    <h1>Log In</h1>
+                                    <span class="subheading">Log in you to your account...</span>
+                                </div>
+
+                                <% } else { %>
+
+                                    <div class="page-heading">
+                                        <h1>Sign Up</h1>
+                                        <span class="subheading">Sign up to creat a new account...</span>
+                                    </div>
+
+                                    <% } %>
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Main Content-->
+            <main class="mb-4">
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+
+
+                        <% if (flag) { %>
+
+                            <div class="col-md-10 col-lg-8 col-xl-7">
+                                <p style="text-align: center;">Securely access your account with our user-friendly login
+                                    page.</p>
+                                <h3>Log In</h3>
+
+                                <% if(errors !=null && errors.length> 0){ %>
+                                    <ul class="list-group"></ul>
+                                    <% for (var i=0; i < errors.length; i++) { %>
+                                        <li class="list-group-item list-group-item-danger">
+                                            <%= errors[i] %>
+                                        </li>
+                                        <% } %>
+                                            </ul>
+                                            <% } %>
+
+                                                <div class="my-5">
+                                                    <!-- * * * * * * * * * * * * * * *-->
+                                                    <!-- * * SB Forms Contact Form * *-->
+                                                    <!-- * * * * * * * * * * * * * * *-->
+                                                    <!-- This form is pre-integrated with SB Forms.-->
+                                                    <!-- To make this form functional, sign up at-->
+                                                    <!-- https://startbootstrap.com/solution/contact-forms-->
+                                                    <!-- to get an API token!-->
+                                                    <form id="logInForm" action="/login/userauth" method="post">
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="username" name="username"
+                                                                type="text" placeholder="Enter your Username..."
+                                                                value="<%= username %>"
+                                                                data-sb-validations="required" />
+                                                            <label for="username">User Name</label>
+                                                            <div class="invalid-feedback"
+                                                                data-sb-feedback="name:required">A name is
+                                                                required.</div>
+                                                        </div>
+
+                                                        <div class="form-floating">
+                                                            <input class="form-control" id="password" name="password"
+                                                                type="password" placeholder="Enter your Password..."
+                                                                value="<%= password %>"
+                                                                data-sb-validations="required" />
+                                                            <label for="password">Password</label>
+                                                            <div class="invalid-feedback"
+                                                                data-sb-feedback="name:required">A name is
+                                                                required.</div>
+                                                        </div>
+
+
+                                                        <br />
+                                                        <!-- Submit Button-->
+                                                        <button class="btn btn-primary text-uppercase" id="loginButton"
+                                                            type="submit">Login</button>
+                                                    </form>
+                                                    <br>
+                                                    <a href="/signup"> New User? click here to Sign Up for new user </a>
+                                                </div>
+                            </div>
+
+                            <br>
+
+                            <% } else { %>
+
+                                <div class="col-md-10 col-lg-8 col-xl-7">
+                                <h3>Sign Up</h3>
+
+                                <% if(errors !=null && errors.length> 0){ %>
+                                    <ul class="list-group"></ul>
+                                        <% for (var i=0; i < errors.length; i++) { %>
+                                            <li class="list-group-item list-group-item-danger">
+                                                <%= errors[i] %>
+                                            </li>
+                                        <% } %>
+                                    </ul>
+                                <% } %>
+
+                                    <div class="my-5">
+                                        <!-- * * * * * * * * * * * * * * *-->
+                                        <!-- * * SB Forms Contact Form * *-->
+                                        <!-- * * * * * * * * * * * * * * *-->
+                                        <!-- This form is pre-integrated with SB Forms.-->
+                                        <!-- To make this form functional, sign up at-->
+                                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                                        <!-- to get an API token!-->
+                                        <form action="/signup/usercreate" id="signUpForm" method="post">
+                                            <div class="form-floating">
+                                                <input class="form-control" id="uname" name="uname"
+                                                    type="text" value="<%= username %>"
+                                                    placeholder="Enter your Username..."
+                                                    data-sb-validations="required" />
+                                                <label for="uname">User Name</label>
+                                                <div class="invalid-feedback"
+                                                    data-sb-feedback="name:required">A name is
+                                                    required.</div>
+                                            </div>
+
+                                            <div class="form-floating">
+                                                <input class="form-control" id="pass" name="pass"
+                                                    type="password" value="<%= password %>"
+                                                    placeholder="Enter your Password..."
+                                                    data-sb-validations="required" />
+                                                <label for="pass">Password</label>
+                                                <div class="invalid-feedback"
+                                                    data-sb-feedback="name:required">A name is
+                                                    required.</div>
+                                            </div>
+
+                                            <div class="form-floating">
+                                                <input class="form-control" id="cnfpass" name="cnfpass"
+                                                    type="password"
+                                                    placeholder="Enter your Password again..."
+                                                    data-sb-validations="required" />
+                                                <label for="cnfpass"> Confirm Password</label>
+                                                <div class="invalid-feedback"
+                                                    data-sb-feedback="name:required">A name is
+                                                    required.</div>
+                                            </div>
+
+                                            <br>
+                                            <div>
+                                                <label for="cnfpass"
+                                                    style="color: #6c757d; padding-bottom: 13px;">User
+                                                    Type</label>
+                                                <select class="form-control" name="usertype"
+                                                    id="usertype">
+                                                    <option value="Driver">Driver</option>
+                                                    <option value="Examiner">Examiner</option>
+                                                    <option value="Admin">Admin</option>
+                                                </select>
+                                            </div>
+                                            <br />
+                                            <!-- Submit Button-->
+                                            <button class="btn btn-primary text-uppercase"
+                                                id="signupButton" type="submit">Sign
+                                                Up</button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            <% } %>
+
+                    </div>
+                </div>
+            </main>
+            <!-- Footer-->
+            <%- include('./layouts/footer'); -%>
+                <%- include('./layouts/scripts'); -%>
+    </body>
+
+</html>

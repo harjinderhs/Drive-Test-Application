@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layouts/header'); -%>
+
+    <body>
+        <!-- Navigation-->
+
+        <%- include('./layouts/nav'); -%>
+
+            <!-- Page Header-->
+            <header class="masthead" style="background-color: #777696;">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="site-heading">
+                                <% if(loggedIn && loggedUserType==="Admin" ) { %>
+
+                                    <h1>Admin's Dashboard</h1>
+                                    <span class="subheading">DriveTest Booking Kiosk</span>
+
+                                    <% } else if(loggedIn && loggedUserType==="Driver" ) { %>
+
+                                        <h1> Driver's Dashboard</h1>
+                                        <span class="subheading">DriveTest Booking Kiosk</span>
+
+                                        <% } else { %>
+
+                                            <h1>Dashboard</h1>
+                                            <span class="subheading">DriveTest Booking Kiosk</span>
+
+                                            <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Main Content-->
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <!-- Post preview-->
+                        <div class="post-preview">
+                            <h2 class="post-title">Safe driving saves lives.</h2>
+                            <h4 class="post-subtitle">Speed has 5 letters, so does death. Slow has 4 letters, so does
+                                life.</h4>
+                            <p>Book your test to get your driving license...</p>
+                        </div>
+                        <!-- Divider-->
+
+                        <!-- Pager-->
+                        <% if(!loggedIn) { %>
+                            <hr class="my-4" />
+                            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase"
+                                    href="/login">Login →</a></div>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer-->
+
+            <%- include('./layouts/footer'); -%>
+                <%- include('./layouts/scripts'); -%>
+
+    </body>
+
+</html>

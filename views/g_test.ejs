@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layouts/header'); -%>
+
+    <body>
+        <!-- Navigation-->
+        <%- include('./layouts/nav'); -%>
+
+            <!-- Page Header-->
+            <header class="masthead" style="background-color: #777696;">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="page-heading">
+                                <h1>G Test Booking</h1>
+                                <span class="subheading">Book your G Test today...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Post Content-->
+            <!-- Main Content-->
+            <main class="mb-4">
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <p>Check/Update below details for proceeding further in the G Booking process.</p>
+                        </div>
+
+                        <div class="my-5 col-md-10 col-lg-8 col-xl-7">
+
+
+                            <form action="/g_test/carupdate" id="UserUpdateForm" method="post">
+                                <fieldset>
+                                    <legend>Personal Information</legend>
+
+                                    <div class="form-floating">
+                                        <input class="form-control" name="firstname" id="firstname" type="text"
+                                            value="<%= userinfo.firstname %>" readonly />
+                                        <label for="firstname">First Name</label>
+                                        <div class="invalid-feedback" data-sb-feedback="firstname:required">
+                                            First name is required.
+                                        </div>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input class="form-control" name="lastname" id="lastname" type="text"
+                                            value="<%= userinfo.lastname %>" readonly />
+                                        <label for="lastname">Last Name</label>
+                                        <div class="invalid-feedback" data-sb-feedback="lastname:required">Last
+                                            name is required.</div>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input class="form-control" name="license_no" id="license_no2" type="text"
+                                            maxlength="17" value="<%= userinfo.license_no %>" readonly />
+                                        <label for="license_no">License Number</label>
+                                        <div class="invalid-feedback" data-sb-feedback="license_no:required">
+                                            License number is
+                                            required.
+                                        </div>
+                                    </div>
+
+                                    <div class="form-floating">
+                                        <input class="form-control" name="age" id="age" type="number" maxlength="3"
+                                            value="<%= userinfo.age %>" readonly />
+                                        <label for="age">Age</label>
+                                        <div class="invalid-feedback" data-sb-feedback="age:required"> Age is
+                                            required.</div>
+                                    </div>
+
+                                </fieldset>
+
+                                <br>
+                                <br>
+                                <fieldset>
+                                    <legend>Car Information</legend>
+
+                                    <div class="form-floating">
+                                        <input class="form-control" name="make" id="make" type="text"
+                                            value="<%= userinfo.car_details.make %>" data-sb-validations="required"
+                                            required />
+                                        <label for="make">Manufacturer Name</label>
+                                        <div class="invalid-feedback" data-sb-feedback="make:required">Car
+                                            manufacturer name is
+                                            required.
+                                        </div>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input class="form-control" name="model" id="model" type="text"
+                                            value="<%= userinfo.car_details.model %>" data-sb-validations="required"
+                                            required />
+                                        <label for="model">Model</label>
+                                        <div class="invalid-feedback" data-sb-feedback="model:required">Last
+                                            name is required.</div>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input class="form-control" name="year" id="year" type="number" maxlength="4"
+                                            value="<%= userinfo.car_details.year %>" data-sb-validations="required"
+                                            required />
+                                        <label for="year">Manufacturing Year</label>
+                                        <div class="invalid-feedback" data-sb-feedback="year:required"> License
+                                            number is required.
+                                        </div>
+                                    </div>
+
+                                    <div class="form-floating">
+                                        <input class="form-control" name="plateno" id="plateno" type="text"
+                                            value="<%= userinfo.car_details.plateno %>" data-sb-validations="required"
+                                            required />
+                                        <label for="plateno">Plate Number</label>
+                                        <div class="invalid-feedback" data-sb-feedback="plateno:required"> Car
+                                            plate number is required.
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                                <br>
+
+
+                                <div class="d-none" id="submitErrorMessage">
+                                    <div class="text-center text-danger mb-3">Error sending message!</div>
+                                </div>
+                                <!-- Submit Button-->
+                                <input class="btn btn-primary text-uppercase" id="submitButton" type="submit"
+                                    value="Update car details">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!-- Footer-->
+            <%- include('./layouts/footer'); -%>
+                <%- include('./layouts/scripts'); -%>
+    </body>
+
+</html>

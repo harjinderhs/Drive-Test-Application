@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layouts/header'); -%>
+
+    <body>
+        <!-- Navigation-->
+
+        <%- include('./layouts/nav'); -%>
+
+            <!-- Page Header-->
+            <header class="masthead" style="background-color: #777696;">
+                <div class="container position-relative px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <div class="site-heading">
+                                <h1>Appointment</h1>
+                                <span class="subheading">Add new appointment here...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Main Content-->
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+
+                        <div class="my-5">
+
+                            <% if(errors !=null && errors.length> 0){ %>
+                                <ul class="list-group"></ul>
+                                <% for (var i=0; i < errors.length; i++) { %>
+                                    <li class="list-group-item list-group-item-danger">
+                                        <%= errors[i] %>
+                                    </li>
+                                    <% } %>
+                                        </ul>
+                                        <br>
+                                        <% } %>
+
+                                            <form action="/appointment/addappointment" id="creatAppointmentForm"
+                                                method="post">
+                                                <div>
+                                                    <label for="appointDate"
+                                                        style="color: #6c757d; padding-bottom: 13px;">Appointment
+                                                        Date</label>
+                                                    <input class="form-control" id="appointDate" name="appointDate"
+                                                        type="date" value=""
+                                                        min="<%= new Date(Date.now() + (3600 * 1000 * 24)).toISOString().slice(0, 10); %>"
+                                                        disabled-dates="2023-11-28, 2023-11-29, 2023-12-07" required />
+                                                </div>
+
+                                                <br>
+                                                <div>
+                                                    <label for="appointTime"
+                                                        style="color: #6c757d; padding-bottom: 13px;">Appointment
+                                                        Time</label>
+                                                    <select class="form-control" name="appointTime" id="appointTime">
+                                                        <option value="09:00 AM">09:00 AM</option>
+                                                        <option value="09:30 AM">09:30 AM</option>
+                                                        <option value="10:00 AM">10:00 AM</option>
+                                                        <option value="10:30 AM">10:30 AM</option>
+                                                        <option value="11:00 AM">11:00 AM</option>
+                                                        <option value="11:30 AM">11:30 AM</option>
+                                                        <option value="12:00 PM">12:00 PM</option>
+                                                        <option value="12:30 PM">12:30 PM</option>
+                                                        <option value="01:00 PM">01:00 PM</option>
+                                                        <option value="01:30 PM">01:30 PM</option>
+                                                        <option value="02:00 PM">02:00 PM</option>
+                                                    </select>
+                                                </div>
+                                                <br />
+                                                <!-- Submit Button-->
+                                                <button class="btn btn-primary text-uppercase" id="addAppointmentButton"
+                                                    type="submit">Add Appointment</button>
+                                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- Footer-->
+
+            <%- include('./layouts/footer'); -%>
+                <%- include('./layouts/scripts'); -%>
+
+    </body>
+
+</html>
